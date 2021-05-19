@@ -1,0 +1,17 @@
+<h1 class="text-center mt-4">Listing Topics</h1>
+
+<table class="table table-striped mt-3 ">
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+	</tr>
+
+	<% @topics.each do |topic| %>
+		<tr>
+			<td><%= topic.title%></td>
+			<td><%= topic.description%></td>
+		</tr>
+	<%end%>
+</table>
+
+<%= link_to "Create New Topic",new_topic_path, class:"btn btn-primary" %>
