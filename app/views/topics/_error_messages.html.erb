@@ -1,0 +1,9 @@
+
+<% if @topic.errors.any? %>
+	<div class="alert alert-danger">This form contains error.</div>
+	<ul>
+		<% @topic.errors.full_messages.each do |msg| %>
+			<li><%= msg%></li>
+		<%end%>
+	</ul>
+<% end %>

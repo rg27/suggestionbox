@@ -4,12 +4,18 @@
 	<tr>
 		<th>Title</th>
 		<th>Description</th>
+		<td>Action</th>
 	</tr>
 
 	<% @topics.each do |topic| %>
 		<tr>
 			<td><%= topic.title%></td>
 			<td><%= topic.description%></td>
+			<td>
+				<%= link_to "Preview", topic_path(topic.id), class:"btn btn-secondary"%>
+				<%= link_to "Edit", edit_topic_path(topic.id), class:"btn btn-success"%>
+				<%= link_to "Delete", topic_path(topic.id), method: :delete, class:"btn btn-danger", data: {confirm:"Are you sure?"}%>
+			</td>
 		</tr>
 	<%end%>
 </table>

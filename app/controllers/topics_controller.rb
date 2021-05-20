@@ -9,7 +9,33 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topics_params)
-    @topic.save
+    if @topic.save
+      redirect_to root_url
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @topic = Topic.find(params[:id])
+  end
+
+  def edit
+    @topic = Topic.find(params[:id])
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+    if @topic.update(topics_params)
+      redirect_to root_url
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+    @topic.destroy
     redirect_to root_url
   end
 
@@ -17,6 +43,5 @@ class TopicsController < ApplicationController
     def topics_params
       params.require(:topic).permit(:title, :description)
     end
+  end
 
-
-end
