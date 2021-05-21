@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  before_action :set_topic, only: [:show, :update, :edit, :destroy, :upvote, :downvote]
   def index
     @topics = Topic.all
   end
@@ -39,9 +40,27 @@ class TopicsController < ApplicationController
     redirect_to root_url
   end
 
+  def upvote
+    @topic = Topic.find(params[:id])
+    @topic.votes.create   #can access .votes because their is a has many relationship on Topic
+    redirect_to root_url
+  end
+
+  def downvote
+    @topic = Topic.find(params[:id])
+    if @topic.votes.count > 0
+      @topic.votes.find_by(params[:id]).destroy  #can access .votes because their is a has many relationship on Topic
+    end
+    redirect_to root_url
+  end
+
   private
     def topics_params
       params.require(:topic).permit(:title, :description)
+    end
+
+    def set_topic
+      @topic = Topic.find(params[:id])
     end
   end
 
