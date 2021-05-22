@@ -60,3 +60,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~>4.4.1'
 gem 'jquery-rails'
 gem 'coffee-script-source', '1.8.0'
+
+group :development do
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+end
+
+
+group :production do
+  gem 'pg'
+end
