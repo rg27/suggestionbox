@@ -1,10 +1,8 @@
-<div class="mt-4 ">
-    <div class="text-center">
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
-        <div class="a">
-          <h5 class="card-title"><%= @topic.title%></h5>
-           <%= @topic.description%> <br>
-           <%= link_to "Go back", root_path, class: "text-left btn btn-primary mt-4" %>
-        </div>
-      </div>
+<div class="card text-center mt-4" style="width: 18rem;">
+  <%= image_tag(@topic.image, style: "width:100%")%>
+  <div class="text-left card-body">
+    <h5 class="card-title"><%= @topic.title%></h5>
+    <p class="card-text"> <%= @topic.description%></p>
+    <%= link_to "Go back", root_path, class: "text-left btn btn-primary mt-2" %>
+  </div>
 </div>
