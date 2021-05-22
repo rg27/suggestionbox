@@ -4,7 +4,7 @@
 	<tr>
 		<th>Title</th>
 		<th>Description</th>
-		<td>Action</th>
+		<td>Actions</th>
 	</tr>
 
 	<% @topics.each do |topic| %>
@@ -12,7 +12,10 @@
 			<td><%= topic.title%></td>
 			<td><%= topic.description%></td>
 			<td>
-				<%= pluralize(topic.votes.count, "Vote")%>
+				<button type="button" class="btn btn-info disabled">
+				Votes <span class="badge badge-danger"><%= topic.votes.count%></span>
+				</button>
+				<%#= pluralize(topic.votes.count, "Vote")%>
 				<%= link_to "+1", upvote_topic_path(topic), method: :post, class: "btn btn-primary"%>
 				<%= link_to "-1", downvote_topic_path(topic), method: :delete, class: "btn btn-primary"%>
 				<%= link_to "Preview", topic_path(topic.id), class:"btn btn-secondary"%>
