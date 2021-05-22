@@ -11,12 +11,12 @@
 #
 default: &default
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4
   pool: 5
   username: root
   password: P@$$word12
   host: localhost
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -49,7 +49,5 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: suggestionbox_production
-  username: suggestionbox
-  password: <%= ENV['SUGGESTIONBOX_DATABASE_PASSWORD'] %>
+  adapter: mysql2
+  advisory_locks: false
