@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root "topics#index"
-
+  resources :users
   resources :topics do
     member do
+      # get "/about", to: "pages#about"
+      # get "/contact", to: "pages#contact"  #pages is the PagesController
       post 'upvote'
       delete 'downvote'
     end
